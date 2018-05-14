@@ -1,4 +1,4 @@
-load('../Dataset/IS_Dataset.mat')
+load('IS_Dataset.mat')
 
 colore = spectra(:,1268);
 
