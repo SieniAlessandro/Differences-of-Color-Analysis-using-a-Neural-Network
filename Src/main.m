@@ -1,28 +1,12 @@
 load('IS_Dataset.mat')
 
-Segnali = [];
-Segnali = [Segnali;spectra(:,1)'];
-dists = [];
+MasterTest = 500;
+CopyTest = 10;
+NumberFeatures = 42;
 
-
-% for i = 1:5
-%     Segnali = [Segnali;NoiseSignal(spectra(:,1),42)'];
-% end
-% 
-% plotSignals(Segnali);
-
-
-[Features,dists] = FeatureMatrix(spectra,82,200,5);
-
-
+[Features,dists] = FeatureMatrix(spectra,NumberFeatures,MasterTest,CopyTest);
 opt  = statset('Display','iter');
-[fs,history] = sequentialfs(@FeatureNetwork,Features,dists,'cv','none','opt',opt,'nfeature',10);
-%plot(noisedSignal(:,2)-spectra(:,2))
-
-[Features,dists] = FeatureMatrix(spectra,82,200,5);
-
-FN(Features(:,fs),dists);
-
-%image(disp)
-
+[fs,history] = sequentialfs(@FeatureNetwork,Features,dists,'cv','none','opt',opt,'nfeatures',10);
+FN(Features(:,fs),dists); 
+ 
 
