@@ -1,8 +1,9 @@
-function y = NoiseSignal(in)  
+function y = NoiseSignal(in,Bands)
+    BandWidth = floor(420/Bands);
     y = in;
-    for i = 1:20
-        if(rand < .6)
-            y(i*20:(i+1)*20) = awgn(in(i*20:(i+1)*20),20,'measured');
+    for i = 1:Bands-1
+        if(rand < .7)
+            y(i*BandWidth:(i+1)*BandWidth) = awgn(in(i*BandWidth:(i+1)*BandWidth),20);
         end
     end
 end

@@ -1,5 +1,5 @@
 function perf = FeatureNetwork(x,t)
-    hiddelayersize = 5;
+    hiddelayersize = 10;
     net = fitnet(hiddelayersize);
     xx = x';
     tt = t';
