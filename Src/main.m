@@ -12,12 +12,17 @@ dists = [];
 % plotSignals(Segnali);
 
 
-[Features,dists] = FeatureMatrix(spectra,42,20,5);
+[Features,dists] = FeatureMatrix(spectra,82,200,5);
 
 
-opt  = statset('Display','iter','UseParallel',true);
-[fs,history] = sequentialfs(@FeatureNetwork,Features,dists,'cv','none','opt',opt,'nfeature',5);
+opt  = statset('Display','iter');
+[fs,history] = sequentialfs(@FeatureNetwork,Features,dists,'cv','none','opt',opt,'nfeature',10);
 %plot(noisedSignal(:,2)-spectra(:,2))
+
+[Features,dists] = FeatureMatrix(spectra,82,200,5);
+
+FN(Features(:,fs),dists);
+
 %image(disp)
 
 

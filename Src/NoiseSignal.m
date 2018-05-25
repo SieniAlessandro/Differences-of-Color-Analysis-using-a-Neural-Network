@@ -3,7 +3,7 @@ function y = NoiseSignal(in,Bands)
     y = in;
     for i = 1:Bands-1
         if(rand < .7)
-            y(i*BandWidth:(i+1)*BandWidth) = awgn(in(i*BandWidth:(i+1)*BandWidth),20);
+            y(i*BandWidth:(i+1)*BandWidth) = awgn(in(i*BandWidth:(i+1)*BandWidth),30);
         end
     end
 end
