@@ -5,5 +5,6 @@ function perf = FN(x,t)
     tt = t';
     [net,tr] = train(net,xx,tt);
     y = net(xx);
-    perf = perform(net,tt,y);
+    %perf = perform(net,tt,y);
+    perf = y';
 end 

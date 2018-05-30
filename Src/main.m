@@ -1,13 +1,13 @@
 
 load('IS_Dataset.mat')
-load('f.mat')
-load('d.mat')
 
-MasterTest = 5;
-CopyTest = 50;
-NumberFeatures = 3;
+
+MasterTest = 10;
+CopyTest = 60;
+NumberFeatures = 15;
 
 [Features,dists] = FeatureMatrix(spectra,NumberFeatures,MasterTest,CopyTest);
+
 
 
 opt  = statset('Display','iter','useParallel',true);
