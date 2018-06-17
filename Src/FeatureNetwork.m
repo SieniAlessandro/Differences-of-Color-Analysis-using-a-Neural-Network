@@ -1,5 +1,5 @@
 function perf = FeatureNetwork(x,t)
-    hiddelayersize = 10;
+    hiddelayersize = 60;
     net = fitnet(hiddelayersize);
     net.TrainParam.ShowWindow = 0;
     xx = x';
