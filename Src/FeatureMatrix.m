@@ -1,11 +1,11 @@
-function [out dist] = FeatureMatrix(spectra,Bands,Masters,Copies)
+function [out dist] = FeatureMatrix(spectra,Bands,Masters,Copies,Correction)
     out = [];
     dist = [];
     Sections = 10;
     SectionsMatrix = GenerateContainerMatrix(Sections,4);
     pos = 0;
-    Error = 10/Sections;
-    spectra = spectra(:,randsample(1269,Masters));
+    %Error = 10/Sections;
+    spectra = spectra(:,randsample(size(spectra,2),Masters));
     for i = 1:Masters
         for j = 1:Copies
             SNR = 50;
@@ -25,7 +25,11 @@ function [out dist] = FeatureMatrix(spectra,Bands,Masters,Copies)
             clc;
             fprintf("NUOVO %i %i\n",i,j);
             out = [out; generateFeatures(Normalizza(spectra(:,i)),Bands),generateFeatures(Normalizza(noisedSignal),Bands)];
-            dist = [dist;d];
+            if(correction == false)
+                dist = [dist;d];
+            else
+                correctedDist = FisCorrect(spectra(:,i),dist);
+            end
             pos = pos + 1;
         end
     end
